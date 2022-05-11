@@ -4,6 +4,6 @@
 
 > PostgreSQL Exporter gathers PostgreSQL metrics for Prometheus consumption.
 
-[Overview of PostgreSQL Exporter](https://github.com/wrouesnel/postgres_exporter)
+[Overview of PostgreSQL Exporter](https://github.com/drycc-addons/drycc-docker-postgres-exporter)
 
-Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+This project has been forked from [postgres_exporter](https://github.com/wrouesnel/postgres_exporter),  We mainly modified the dockerfile in order to build the images of amd64 and arm64 architectures. 

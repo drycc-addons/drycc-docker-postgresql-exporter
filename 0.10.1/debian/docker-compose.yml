@@ -2,4 +2,4 @@ version: '2'
 
 services:
   postgres-exporter:
-    image: docker.io/bitnami/postgres-exporter:0.10.1
+    image: registry.drycc.cc/drycc-addons/postgres-exporter:0.10.1

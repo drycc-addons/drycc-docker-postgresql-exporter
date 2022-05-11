@@ -1,10 +1,10 @@
 # If DRYCC_REGISTRY is not set, try to populate it from legacy DEV_REGISTRY
 DRYCC_REGISTRY ?= $(DEV_REGISTRY)
 IMAGE_PREFIX ?= drycc-addons
-COMPONENT ?= postgresql-exporter
+COMPONENT ?= postgres-exporter
 SHORT_NAME ?= $(COMPONENT)
 PLATFORM ?= linux/amd64,linux/arm64
-POSTGRESQL_EXPORTER_VERSION ?= 0.10.1
+POSTGRES_EXPORTER_VERSION ?= 0.10.1
 
 include versioning.mk
 
@@ -24,11 +24,11 @@ check-docker:
 build: docker-build
 
 docker-build: check-docker
-	docker build ${DOCKER_BUILD_FLAGS} -t ${IMAGE} ${POSTGRESQL_EXPORTER_VERSION}/debian
+	docker build ${DOCKER_BUILD_FLAGS} -t ${IMAGE} ${POSTGRES_EXPORTER_VERSION}/debian
 	docker tag ${IMAGE} ${MUTABLE_IMAGE}
 
 docker-buildx: check-docker
-	docker buildx build --platform ${PLATFORM} -t ${IMAGE} ${POSTGRESQL_EXPORTER_VERSION}/debian --push
+	docker buildx build --platform ${PLATFORM} -t ${IMAGE} ${POSTGRES_EXPORTER_VERSION}/debian --push
 
 clean: check-docker
 	docker rmi $(IMAGE)

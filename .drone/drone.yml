@@ -12,7 +12,7 @@ steps:
   - echo $CONTAINER_PASSWORD | docker login $DRYCC_REGISTRY --username $CONTAINER_USERNAME --password-stdin > /dev/null 2>&1
   - make docker-build docker-immutable-push
   environment:
-    POSTGRESQL_EXPORTER_VERSION: ${DRONE_TAG:-0.10.1}
+    POSTGRES_EXPORTER_VERSION: ${DRONE_TAG:-0.10.1}
     VERSION: ${DRONE_TAG:-0.10.1}-linux-amd64
     DEV_REGISTRY:
       from_secret: dev_registry
@@ -42,7 +42,7 @@ steps:
   - echo $CONTAINER_PASSWORD | docker login $DRYCC_REGISTRY --username $CONTAINER_USERNAME --password-stdin > /dev/null 2>&1
   - make docker-build docker-immutable-push
   environment:
-    POSTGRESQL_EXPORTER_VERSION: ${DRONE_TAG:-0.10.1}
+    POSTGRES_EXPORTER_VERSION: ${DRONE_TAG:-0.10.1}
     VERSION: ${DRONE_TAG:-0.10.1}-linux-arm64
     DEV_REGISTRY:
       from_secret: dev_registry
@@ -71,13 +71,13 @@ steps:
   pull: always
   commands:
   - sed -i "s/registry.drycc.cc/$${DRYCC_REGISTRY}/g" .drone/manifest.tmpl
-  - sed -i "s/canary/$${POSTGRESQL_EXPORTER_VERSION}/g" .drone/manifest.tmpl
+  - sed -i "s/canary/$${POSTGRES_EXPORTER_VERSION}/g" .drone/manifest.tmpl
   environment:
     DEV_REGISTRY:
       from_secret: dev_registry
     DRYCC_REGISTRY:
       from_secret: drycc_registry
-    POSTGRESQL_EXPORTER_VERSION: ${DRONE_TAG:-0.10.1}
+    POSTGRES_EXPORTER_VERSION: ${DRONE_TAG:-0.10.1}
 
 - name: publish
   image: plugins/manifest

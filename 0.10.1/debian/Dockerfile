@@ -1,10 +1,10 @@
 FROM registry.drycc.cc/drycc/base:bullseye
 
-ENV POSTGRESQL_EXPORTER_VERSION="0.10.1"
+ENV POSTGRES_EXPORTER_VERSION="0.10.1"
 
 RUN install-packages libnss-wrapper \
-    && install-stack postgresql_exporter $POSTGRESQL_EXPORTER_VERSION \
-    && echo "export NSS_WRAPPER_LIB=/usr/lib/`echo $(uname -m)`-linux-gnu/libnss_wrapper.so" >> /opt/drycc/postgresql_exporter/profile.d/postgresql_exporter.sh \
+    && install-stack postgres_exporter $POSTGRES_EXPORTER_VERSION \
+    && echo "export NSS_WRAPPER_LIB=/usr/lib/`echo $(uname -m)`-linux-gnu/libnss_wrapper.so" >> /opt/drycc/postgres_exporter/profile.d/postgres_exporter.sh \
     && . init-stack \
     && rm -rf \
     /usr/share/doc \
